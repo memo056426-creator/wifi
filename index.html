@@ -1,85 +1,78 @@
-<!DOCTYPE html>
+            if (input === "123") {
+                window.location.href = "http://google.com";
+            } else if (input !== null) {
+                alert("الرقم خطأ.. اطلب السر من أبو عماد");
+            }<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبكة الغالي عموري</title>
+    <title>شبكة أبو عماد ستارلينك</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
             padding: 0;
             font-family: 'Cairo', sans-serif;
-            background: #000; /* أسود ملكي فخم */
+            background-color: #000;
+            background-image: radial-gradient(circle, #1a1a1a 0%, #000 100%);
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-        }
-        /* هالة ضوئية خلف عموري */
-        .glow-bg {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
-            z-index: 1;
+            color: #fff;
+            text-align: center;
         }
         .container {
-            position: relative;
-            z-index: 2;
-            text-align: center;
             width: 90%;
-            max-width: 450px;
+            max-width: 400px;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.8);
         }
         .profile-img {
-            width: 250px; /* حجم كبير للتركيز على عموري */
-            height: 250px;
+            width: 240px; /* حجم كبير للتركيز على عموري */
+            height: 240px;
             border-radius: 50%;
             border: 5px solid #d4af37; /* إطار ذهبي ملكي */
             object-fit: cover;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
-            animation: pulse 3s infinite ease-in-out;
         }
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
-            50% { transform: scale(1.03); box-shadow: 0 0 60px rgba(212, 175, 55, 0.7); }
-            100% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+        h1 {
+            font-size: 34px;
+            font-weight: 900;
+            color: #d4af37;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
-        h1 { 
-            font-size: 36px; 
-            font-weight: 900; 
-            color: #d4af37; 
-            margin: 0 0 10px 0;
-            text-shadow: 2px 2px 10px rgba(0,0,0,1);
-        }
-        .welcome-text {
-            color: #fff;
+        p {
             font-size: 18px;
-            margin-bottom: 30px;
-            opacity: 0.8;
+            opacity: 0.9;
+            margin-bottom: 35px;
         }
         .btn {
             background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
             color: #000;
             border: none;
-            padding: 18px 0;
+            padding: 16px 0;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 22px;
+            font-size: 20px;
             cursor: pointer;
             width: 100%;
-            transition: 0.4s;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: 0.3s ease;
         }
         .btn:hover {
             transform: scale(1.05);
-            background: #fff;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.4);
         }
         .footer {
-            margin-top: 50px;
-            font-size: 12px;
+            margin-top: 35px;
+            font-size: 11px;
             color: rgba(255,255,255,0.2);
             letter-spacing: 2px;
         }
@@ -87,30 +80,34 @@
 </head>
 <body>
 
-    <div class="glow-bg"></div>
-
     <div class="container">
         <img src="MVING_20260220_183511.jpg" alt="عموري" class="profile-img">
         
         <h1>كلنا نحب عموري</h1>
-        <div class="welcome-text">شبكة أبو عماد.. حياكم الله</div>
+        <p>بشبكة أبو عماد.. حياكم الله</p>
         
-        <button onclick="checkAction()" class="btn">دخول السيرفر</button>
+        <button onclick="checkPassword()" class="btn">دخول السيرفر</button>
         
-        <div class="footer">STARLINK HIGH SPEED ACCESS</div>
+        <div class="footer">STARLINK PREMIUM ACCESS</div>
     </div>
 
     <script>
-        function checkAction() {
-            // العبارة التي طلبتها بدلاً من الرقم السري
+        function checkPassword() {
+            var password = "123";
+            // العبارة التي طلبتها يا أبو عماد
             var input = prompt("نعم احب عموري");
             
-            // كلمة السر لا تزال 123 للعبور
-            if (input === "123") {
+            if (input === password) {
                 window.location.href = "http://google.com";
             } else if (input !== null) {
-                alert("الرقم خطأ.. اطلب السر من أبو عماد");
+                alert("الرقم غلط.. اطلب السر من أبو عماد");
             }
+        }
+    </script>
+
+</body>
+</html>
+
         }
     </script>
 
