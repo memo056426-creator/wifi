@@ -10,18 +10,19 @@
             margin: 0;
             padding: 0;
             font-family: 'Cairo', sans-serif;
-            background: #000;
+            background: #000; /* أسود ملكي فخم */
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             overflow: hidden;
         }
+        /* هالة ضوئية خلف عموري */
         .glow-bg {
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, transparent 70%);
             z-index: 1;
         }
         .container {
@@ -32,54 +33,55 @@
             max-width: 450px;
         }
         .profile-img {
-            width: 280px;
-            height: 280px;
+            width: 250px; /* حجم كبير للتركيز على عموري */
+            height: 250px;
             border-radius: 50%;
-            border: 6px solid #d4af37;
+            border: 5px solid #d4af37; /* إطار ذهبي ملكي */
             object-fit: cover;
-            margin-bottom: 30px;
-            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+            margin-bottom: 20px;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
             animation: pulse 3s infinite ease-in-out;
         }
         @keyframes pulse {
             0% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
-            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(212, 175, 55, 0.7); }
+            50% { transform: scale(1.03); box-shadow: 0 0 60px rgba(212, 175, 55, 0.7); }
             100% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
         }
         h1 { 
-            font-size: 38px; 
+            font-size: 36px; 
             font-weight: 900; 
             color: #d4af37; 
-            margin: 10px 0;
-            text-shadow: 0 4px 10px rgba(0,0,0,1);
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px 10px rgba(0,0,0,1);
         }
-        .welcome-msg {
-            font-size: 20px;
+        .welcome-text {
             color: #fff;
-            margin-bottom: 40px;
-            opacity: 0.9;
+            font-size: 18px;
+            margin-bottom: 30px;
+            opacity: 0.8;
         }
         .btn {
             background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
             color: #000;
             border: none;
             padding: 18px 0;
-            border-radius: 15px;
+            border-radius: 50px;
             font-weight: bold;
             font-size: 22px;
             cursor: pointer;
             width: 100%;
-            transition: 0.3s;
+            transition: 0.4s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
         .btn:hover {
-            letter-spacing: 2px;
+            transform: scale(1.05);
             background: #fff;
         }
-        .starlink-footer {
-            margin-top: 40px;
-            color: rgba(255,255,255,0.3);
+        .footer {
+            margin-top: 50px;
             font-size: 12px;
-            letter-spacing: 3px;
+            color: rgba(255,255,255,0.2);
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -91,27 +93,26 @@
         <img src="MVING_20260220_183511.jpg" alt="عموري" class="profile-img">
         
         <h1>كلنا نحب عموري</h1>
-        <div class="welcome-msg">بشبكة أبو عماد.. حياكم الله</div>
+        <div class="welcome-text">شبكة أبو عماد.. حياكم الله</div>
         
-        <button onclick="checkPassword()" class="btn">دخول السيرفر</button>
+        <button onclick="checkAction()" class="btn">دخول السيرفر</button>
         
-        <div class="starlink-footer">STARLINK PREMIUM ACCESS</div>
+        <div class="footer">STARLINK HIGH SPEED ACCESS</div>
     </div>
 
     <script>
-        function checkPassword() {
-            var password = "123";
-            // تم استبدال العبارة بناءً على طلبك
-            var input = prompt("نعم احب عموري"); 
+        function checkAction() {
+            // العبارة التي طلبتها بدلاً من الرقم السري
+            var input = prompt("نعم احب عموري");
             
-            if (input === password) {
+            // كلمة السر لا تزال 123 للعبور
+            if (input === "123") {
                 window.location.href = "http://google.com";
             } else if (input !== null) {
-                alert("الرقم خطأ.. اطلبه من أبو عماد");
+                alert("الرقم خطأ.. اطلب السر من أبو عماد");
             }
         }
     </script>
 
 </body>
 </html>
-
