@@ -5,31 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شبكة أبو عماد ستارلينك</title>
     <style>
-        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #0a0a0a; color: white; padding-top: 50px; }
-        img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #00d4ff; object-fit: cover; box-shadow: 0 0 20px #00d4ff; }
-        h1 { margin-top: 20px; font-size: 26px; color: #00d4ff; }
-        p { font-size: 22px; color: #ffffff; font-weight: bold; margin-top: 10px; }
-        .btn { display: inline-block; margin-top: 30px; padding: 12px 40px; background: #00d4ff; color: black; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 20px; transition: 0.3s; cursor: pointer; border: none; }
-        .btn:hover { background: #008fb3; }
-        .starlink-tag { margin-top: 15px; font-size: 14px; color: #555; font-style: italic; }
+        body { background: #050505; color: #fff; font-family: 'Arial', sans-serif; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .container { background: rgba(20, 20, 20, 0.95); padding: 30px; border-radius: 20px; border: 1px solid #333; width: 350px; }
+        .header-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #00d2ff; margin-bottom: 15px; object-fit: cover; }
+        h1 { font-size: 22px; color: #00d2ff; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .speed-card { background: #111; border: 1px solid #222; padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
+        .speed-card:hover, .speed-card.active { border-color: #00d2ff; background: rgba(0, 210, 255, 0.1); }
+        .speed-card b { display: block; font-size: 18px; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white; box-sizing: border-box; }
+        .btn { background: #00d2ff; color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
-    <script>
-        function checkPassword() {
-            var password = "123"; 
-            var input = prompt("ادخل الرقم السري لدخول شبكة أبو عماد:");
-            if (input === password) {
-                window.location.href = "http://google.com";
-            } else if (input !== null) {
-                alert("الرقم غلط يا وحش اطلب السر من أبو عماد");
-            }
-        }
-    </script>
 </head>
 <body>
-    <img src="MVIMG_20260220_183511.jpg" alt="عموري">
-    <h1>نورت شبكة أبو عماد (ستارلينك)</h1>
-    <p>كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
-    <button onclick="checkPassword()" class="btn">دخول للإنترنت</button>
-    <div class="starlink-tag">Powered by Starlink High Speed</div>
+    <div class="container">
+        <img src="MVING_20260220_183511.jpg" alt="عموري" class="header-img">
+        <h1>نورت شبكة أبو عماد (ستارلينك)</h1>
+        <p>كلنا نحب عموري.. اذكر الله واختر سرعتك</p>
+        <div class="grid">
+            <div class="speed-card" onclick="sel(this)"><b>50 Mbps</b></div>
+            <div class="speed-card" onclick="sel(this)"><b>100 Mbps</b></div>
+            <div class="speed-card" onclick="sel(this)"><b>250 Mbps</b></div>
+            <div class="speed-card" onclick="sel(this)"><b>TURBO</b></div>
+        </div>
+        <input type="password" id="pass" placeholder="ادخل الرقم السري">
+        <button class="btn" onclick="check()">دخول للإنترنت</button>
+    </div>
+    <script>
+        function sel(el) { document.querySelectorAll('.speed-card').forEach(c => c.classList.remove('active')); el.classList.add('active'); }
+        function check() { if(document.getElementById('pass').value == "123") { window.location.href = "http://google.com"; } else { alert("الرقم غلط يا وحش اطلب السر من أبو عماد"); } }
+    </script>
 </body>
 </html>
