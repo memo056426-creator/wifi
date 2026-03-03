@@ -3,38 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبكة الغالي عموري</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>شبكة أبو عماد ستارلينك</title>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Cairo', sans-serif; background: #000; height: 100vh; display: flex; justify-content: center; align-items: center; color: #fff; text-align: center; }
-        .container { width: 85%; max-width: 420px; padding: 50px 20px; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border-radius: 40px; border: 2px solid #d4af37; box-shadow: 0 0 50px rgba(212, 175, 55, 0.3); position: relative; overflow: hidden; }
-        /* خلفية تشبه ديكور السيارات الفخمة */
-        .container::before { content: ""; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%); z-index: -1; }
-        .profile-img { width: 240px; height: 240px; border-radius: 50%; border: 6px solid #d4af37; object-fit: cover; margin-bottom: 25px; box-shadow: 0 0 40px rgba(212, 175, 55, 0.6); transition: 0.5s; }
-        h1 { font-size: 38px; font-weight: 900; color: #d4af37; margin: 0 0 10px 0; text-shadow: 0 4px 10px rgba(0,0,0,0.8); }
-        p { font-size: 20px; color: #fff; margin-bottom: 40px; opacity: 0.9; }
-        .btn { background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%); color: #000; border: none; padding: 18px 0; border-radius: 50px; font-weight: bold; font-size: 24px; cursor: pointer; width: 100%; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #0a0a0a; color: white; padding-top: 50px; }
+        img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #00d4ff; object-fit: cover; box-shadow: 0 0 20px #00d4ff; }
+        h1 { margin-top: 20px; font-size: 26px; color: #00d4ff; }
+        p { font-size: 22px; color: #ffffff; font-weight: bold; margin-top: 10px; }
+        .btn { display: inline-block; margin-top: 30px; padding: 12px 40px; background: #00d4ff; color: black; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 20px; transition: 0.3s; cursor: pointer; border: none; }
+        .btn:hover { background: #008fb3; }
+        .starlink-tag { margin-top: 15px; font-size: 14px; color: #555; font-style: italic; }
     </style>
-</head>
-<body>
-    <div class="container">
-        <img src="[[كود_الصورة_هنا]]" alt="عموري" class="profile-img">
-        
-        <h1>كلنا نحب عموري</h1>
-        <p>بشبكة أبو عماد.. حياكم الله</p>
-        
-        <button onclick="checkPassword()" class="btn">دخول السيرفر</button>
-    </div>
-
     <script>
         function checkPassword() {
-            var input = prompt("نعم احب عموري");
-            if (input === "123" || input === "نعم احب عموري") {
+            var password = "123"; 
+            var input = prompt("ادخل الرقم السري لدخول شبكة أبو عماد:");
+            if (input === password) {
                 window.location.href = "http://google.com";
             } else if (input !== null) {
-                alert("الرقم غلط يا وحش.. اطلب السر من أبو عماد");
+                alert("الرقم غلط يا وحش اطلب السر من أبو عماد");
             }
         }
     </script>
+</head>
+<body>
+    <img src="MVIMG_20260220_183511.jpg" alt="عموري">
+    <h1>نورت شبكة أبو عماد (ستارلينك)</h1>
+    <p>كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
+    <button onclick="checkPassword()" class="btn">دخول للإنترنت</button>
+    <div class="starlink-tag">Powered by Starlink High Speed</div>
 </body>
 </html>
