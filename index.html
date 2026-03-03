@@ -2,38 +2,30 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبكة أبو عماد ستارلينك</title>
+    <title>شبكة أبو عماد</title>
     <style>
-        body { background: #050505; color: #fff; font-family: 'Arial', sans-serif; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
-        .container { background: rgba(20, 20, 20, 0.95); padding: 30px; border-radius: 20px; border: 1px solid #333; width: 350px; }
-        .header-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #00d2ff; margin-bottom: 15px; object-fit: cover; }
-        h1 { font-size: 22px; color: #00d2ff; }
+        body { background: #000; color: #fff; font-family: sans-serif; text-align: center; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .box { background: #111; padding: 30px; border-radius: 20px; border: 1px solid #00d2ff; width: 350px; }
+        .pic { width: 150px; height: 150px; border-radius: 50%; border: 3px solid #00d2ff; margin-bottom: 15px; object-fit: cover; }
         .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 20px 0; }
-        .speed-card { background: #111; border: 1px solid #222; padding: 15px; border-radius: 12px; cursor: pointer; transition: 0.3s; }
-        .speed-card:hover, .speed-card.active { border-color: #00d2ff; background: rgba(0, 210, 255, 0.1); }
-        .speed-card b { display: block; font-size: 18px; }
-        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: 1px solid #333; background: #1a1a1a; color: white; box-sizing: border-box; }
-        .btn { background: #00d2ff; color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .card { background: #222; padding: 15px; border-radius: 10px; border: 1px solid #333; cursor: pointer; }
+        .card:hover { border-color: #00d2ff; }
+        input { width: 100%; padding: 12px; margin: 10px 0; border-radius: 8px; border: none; background: #eee; }
+        .go { background: #00d2ff; color: #000; border: none; padding: 15px; width: 100%; border-radius: 8px; font-weight: bold; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <img src="MVING_20260220_183511.jpg" alt="عموري" class="header-img">
-        <h1>نورت شبكة أبو عماد (ستارلينك)</h1>
-        <p>كلنا نحب عموري.. اذكر الله واختر سرعتك</p>
+    <div class="box">
+        <img src="amoory.jpg" class="pic">
+        <h2>نورت شبكة أبو عماد</h2>
         <div class="grid">
-            <div class="speed-card" onclick="sel(this)"><b>50 Mbps</b></div>
-            <div class="speed-card" onclick="sel(this)"><b>100 Mbps</b></div>
-            <div class="speed-card" onclick="sel(this)"><b>250 Mbps</b></div>
-            <div class="speed-card" onclick="sel(this)"><b>TURBO</b></div>
+            <div class="card">50 Mbps</div>
+            <div class="card">100 Mbps</div>
+            <div class="card">250 Mbps</div>
+            <div class="card">TURBO</div>
         </div>
-        <input type="password" id="pass" placeholder="ادخل الرقم السري">
-        <button class="btn" onclick="check()">دخول للإنترنت</button>
+        <input type="password" placeholder="الرقم السري">
+        <button class="go">دخول</button>
     </div>
-    <script>
-        function sel(el) { document.querySelectorAll('.speed-card').forEach(c => c.classList.remove('active')); el.classList.add('active'); }
-        function check() { if(document.getElementById('pass').value == "123") { window.location.href = "http://google.com"; } else { alert("الرقم غلط يا وحش اطلب السر من أبو عماد"); } }
-    </script>
 </body>
 </html>
