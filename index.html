@@ -3,33 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبكة أبو عماد ستارلينك</title>
+    <title>شبكة الغالي عموري</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        body { text-align: center; font-family: 'Arial', sans-serif; background-color: #0a0a0a; color: white; padding-top: 50px; }
-        img { width: 250px; height: 250px; border-radius: 50%; border: 5px solid #00d4ff; object-fit: cover; box-shadow: 0 0 20px #00d4ff; }
-        h1 { margin-top: 20px; font-size: 26px; color: #00d4ff; }
-        p { font-size: 22px; color: #ffffff; font-weight: bold; margin-top: 10px; }
-        .btn { display: inline-block; margin-top: 30px; padding: 12px 40px; background: #00d4ff; color: black; text-decoration: none; border-radius: 30px; font-weight: bold; font-size: 20px; transition: 0.3s; cursor: pointer; border: none; }
-        .btn:hover { background: #008fb3; }
-        .starlink-tag { margin-top: 15px; font-size: 14px; color: #555; font-style: italic; }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            background: #000;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .glow-bg {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+            z-index: 1;
+        }
+        .container {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 90%;
+            max-width: 450px;
+        }
+        .profile-img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            border: 6px solid #d4af37;
+            object-fit: cover;
+            margin-bottom: 30px;
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.4);
+            animation: pulse 3s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+            50% { transform: scale(1.02); box-shadow: 0 0 60px rgba(212, 175, 55, 0.7); }
+            100% { transform: scale(1); box-shadow: 0 0 30px rgba(212, 175, 55, 0.4); }
+        }
+        h1 { 
+            font-size: 38px; 
+            font-weight: 900; 
+            color: #d4af37; 
+            margin: 10px 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,1);
+        }
+        .welcome-msg {
+            font-size: 20px;
+            color: #fff;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        .btn {
+            background: linear-gradient(135deg, #d4af37 0%, #b8860b 100%);
+            color: #000;
+            border: none;
+            padding: 18px 0;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 22px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.3s;
+        }
+        .btn:hover {
+            letter-spacing: 2px;
+            background: #fff;
+        }
+        .starlink-footer {
+            margin-top: 40px;
+            color: rgba(255,255,255,0.3);
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
     </style>
+</head>
+<body>
+
+    <div class="glow-bg"></div>
+
+    <div class="container">
+        <img src="MVING_20260220_183511.jpg" alt="عموري" class="profile-img">
+        
+        <h1>كلنا نحب عموري</h1>
+        <div class="welcome-msg">بشبكة أبو عماد.. حياكم الله</div>
+        
+        <button onclick="checkPassword()" class="btn">دخول السيرفر</button>
+        
+        <div class="starlink-footer">STARLINK PREMIUM ACCESS</div>
+    </div>
+
     <script>
         function checkPassword() {
-            var password = "123"; 
-            var input = prompt("ادخل الرقم السري لدخول شبكة أبو عماد:");
+            var password = "123";
+            // تم استبدال العبارة بناءً على طلبك
+            var input = prompt("نعم احب عموري"); 
+            
             if (input === password) {
                 window.location.href = "http://google.com";
             } else if (input !== null) {
-                alert("الرقم غلط يا وحش اطلب السر من أبو عماد");
+                alert("الرقم خطأ.. اطلبه من أبو عماد");
             }
         }
     </script>
-</head>
-<body>
-    <img src="MVIMG_20260220_183511.jpg" alt="عموري">
-    <h1>نورت شبكة أبو عماد (ستارلينك)</h1>
-    <p>كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
-    <button onclick="checkPassword()" class="btn">دخول للإنترنت</button>
-    <div class="starlink-tag">Powered by Starlink High Speed</div>
+
 </body>
 </html>
+
