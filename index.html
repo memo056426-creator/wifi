@@ -49,17 +49,14 @@
             let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
             let hour = new Date().getHours();
             let min, max;
-
             if (hour >= 5 && hour < 12) { min = 112; max = 150; }
             else if (hour >= 13 && hour < 19) { min = 40; max = 80; }
             else if (hour >= 19 || hour < 5) { min = 25; max = 40; }
             else { min = 80; max = 110; }
-
             let targetSpeed = min + (Math.random() * (max - min));
-            
             let interval = setInterval(() => {
                 c++;
-                let tempSpeed = targetSpeed + (Math.random() * 10 - 5);
+                let tempSpeed = targetSpeed + (Math.random() * 6 - 3);
                 num.innerText = tempSpeed.toFixed(1);
                 let angle = (tempSpeed / 150) * 240 - 120;
                 let offset = 440 - (tempSpeed / 150) * 280;
