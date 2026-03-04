@@ -10,17 +10,14 @@
         .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 25px rgba(0, 212, 255, 0.4); margin-bottom: 15px; }
         h1 { font-size: 24px; color: var(--primary-color); margin: 0; }
         .subtitle { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-        
         .gauge-container { position: relative; width: 280px; height: 200px; margin: 0 auto; }
         svg { width: 100%; height: 100%; }
         .gauge-bg { fill: none; stroke: #222; stroke-width: 12; stroke-linecap: round; }
         .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
         .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
         .speed-digital { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 50px; font-weight: 900; color: white; }
-        
         .speed-box { background: var(--card-bg); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); max-width: 380px; margin: 0 auto; }
         .btn-measure { padding: 10px 25px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
-        
         .auth-fixed { margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; }
         input[type="password"] { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; text-align: center; box-sizing: border-box; font-size: 16px; }
         .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; }
@@ -30,10 +27,8 @@
     <img src="MVIMG_20260220_183511.jpg" alt="عموري" class="profile-img">
     <h1>شبكة أبو عماد ستارلينك</h1>
     <p class="subtitle">كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
-
     <div class="speed-box">
         <button class="btn-measure" onclick="runTest()">قياس السرعة الحالية</button>
-        
         <div class="gauge-container">
             <svg viewBox="0 0 200 150">
                 <path class="gauge-bg" d="M 40 120 A 75 75 0 1 1 160 120" />
@@ -44,47 +39,46 @@
             <div class="speed-digital" id="speed-num">0.0</div>
             <div style="color:#666; font-size:12px; margin-top:-10px;">Mbps</div>
         </div>
-
         <div class="auth-fixed">
             <input type="password" id="pass" placeholder="أدخل الرقم السري">
             <button onclick="login()" class="btn-connect">اتصال الآن</button>
         </div>
     </div>
-
     <script>
         function runTest() {
             let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
-            // السرعات اللي تبيها تثبت عليها كل مرة بشكل عشوائي
-            const finalSpeeds = [30, 60, 80, 110, 114];
-            let selectedFinal = finalSpeeds[Math.floor(Math.random() * finalSpeeds.length)];
+            let hour = new Date().getHours();
+            let min, max;
+
+            if (hour >= 5 && hour < 12) { min = 112; max = 150; }
+            else if (hour >= 13 && hour < 19) { min = 40; max = 80; }
+            else if (hour >= 19 || hour < 5) { min = 25; max = 40; }
+            else { min = 80; max = 110; }
+
+            let targetSpeed = min + (Math.random() * (max - min));
             
             let interval = setInterval(() => {
                 c++;
-                // أرقام عشوائية أثناء الدوران للهياط
-                let tempSpeed = Math.floor(Math.random() * 120);
+                let tempSpeed = targetSpeed + (Math.random() * 10 - 5);
                 num.innerText = tempSpeed.toFixed(1);
-                
-                let angle = (tempSpeed / 120) * 240 - 120;
-                let offset = 440 - (tempSpeed / 120) * 280;
+                let angle = (tempSpeed / 150) * 240 - 120;
+                let offset = 440 - (tempSpeed / 150) * 280;
                 ndl.setAttribute('transform', `rotate(${angle}, 100, 100)`);
                 prog.style.strokeDashoffset = offset;
-
                 if(c >= 30) { 
                     clearInterval(interval); 
-                    // التثبيت على السرعة اللي اختارها الكود عشوائياً من قائمتك
-                    num.innerText = selectedFinal.toFixed(1);
-                    let finalAngle = (selectedFinal / 120) * 240 - 120;
-                    let finalOffset = 440 - (selectedFinal / 120) * 280;
+                    num.innerText = targetSpeed.toFixed(1);
+                    let finalAngle = (targetSpeed / 150) * 240 - 120;
+                    let finalOffset = 440 - (targetSpeed / 150) * 280;
                     ndl.setAttribute('transform', `rotate(${finalAngle}, 100, 100)`);
                     prog.style.strokeDashoffset = finalOffset;
                 }
             }, 80);
         }
-
         function login() {
             let p = document.getElementById('pass').value;
-            if (p === "123") { // الرمز من كودك
-                alert("تم الاتصال بنجاح! نورت الشبكة");
+            if (p === "123") {
+                alert("تم الاتصال بنجاح نورت الشبكة");
                 window.location.href = "http://google.com";
             } else { alert("الرقم السري غلط يا بوب"); }
         }
