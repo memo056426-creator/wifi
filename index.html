@@ -11,20 +11,19 @@
         h1 { font-size: 24px; color: var(--primary-color); margin: 0; }
         .subtitle { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
         
-        /* تصميم العداد الدائري */
         .gauge-container { position: relative; width: 280px; height: 200px; margin: 0 auto; }
         svg { width: 100%; height: 100%; }
         .gauge-bg { fill: none; stroke: #222; stroke-width: 12; stroke-linecap: round; }
-        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: stroke-dashoffset 0.1s; }
-        .needle { fill: #ddd; transform-origin: 100px 100px; transition: transform 0.1s; }
-        .speed-digital { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 45px; font-weight: 900; color: white; }
+        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
+        .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
+        .speed-digital { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 50px; font-weight: 900; color: white; }
         
         .speed-box { background: var(--card-bg); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); max-width: 380px; margin: 0 auto; }
         .btn-measure { padding: 10px 25px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
         
         .auth-fixed { margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; }
         input[type="password"] { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; text-align: center; box-sizing: border-box; font-size: 16px; }
-        .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; box-shadow: 0 5px 15px rgba(0, 212, 255, 0.2); }
+        .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; }
     </style>
 </head>
 <body>
@@ -54,29 +53,30 @@
 
     <script>
         function runTest() {
-            let num = document.getElementById('speed-num'),
-                prog = document.getElementById('progress'),
-                ndl = document.getElementById('needle'),
-                c = 0;
-            const speeds = [30, 60, 80, 110, 114]; // سرعاتك اللي طلبتها
+            let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
+            // السرعات اللي تبيها تثبت عليها كل مرة بشكل عشوائي
+            const finalSpeeds = [30, 60, 80, 110, 114];
+            let selectedFinal = finalSpeeds[Math.floor(Math.random() * finalSpeeds.length)];
             
             let interval = setInterval(() => {
                 c++;
-                let s = speeds[Math.floor(Math.random() * speeds.length)];
-                num.innerText = s.toFixed(1);
+                // أرقام عشوائية أثناء الدوران للهياط
+                let tempSpeed = Math.floor(Math.random() * 120);
+                num.innerText = tempSpeed.toFixed(1);
                 
-                // حسابات تحريك الإبرة والقوس
-                let angle = (s / 120) * 240 - 120;
-                let offset = 440 - (s / 120) * 280;
-                
+                let angle = (tempSpeed / 120) * 240 - 120;
+                let offset = 440 - (tempSpeed / 120) * 280;
                 ndl.setAttribute('transform', `rotate(${angle}, 100, 100)`);
                 prog.style.strokeDashoffset = offset;
 
-                if(c >= 40) {
-                    clearInterval(interval);
-                    num.innerText = "114.0";
-                    ndl.setAttribute('transform', `rotate(108, 100, 100)`);
-                    prog.style.strokeDashoffset = 175;
+                if(c >= 30) { 
+                    clearInterval(interval); 
+                    // التثبيت على السرعة اللي اختارها الكود عشوائياً من قائمتك
+                    num.innerText = selectedFinal.toFixed(1);
+                    let finalAngle = (selectedFinal / 120) * 240 - 120;
+                    let finalOffset = 440 - (selectedFinal / 120) * 280;
+                    ndl.setAttribute('transform', `rotate(${finalAngle}, 100, 100)`);
+                    prog.style.strokeDashoffset = finalOffset;
                 }
             }, 80);
         }
@@ -86,9 +86,8 @@
             if (p === "123") { // الرمز من كودك
                 alert("تم الاتصال بنجاح! نورت الشبكة");
                 window.location.href = "http://google.com";
-            } else { alert("الرقم السري غلط يا وحش"); }
+            } else { alert("الرقم السري غلط يا بوب"); }
         }
     </script>
 </body>
 </html>
-
