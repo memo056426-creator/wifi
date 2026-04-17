@@ -3,45 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="refresh" content="300"> 
     <title>مكتب عماد عدن العقاري</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0f172a; font-family: sans-serif; }
-        .main-container { display: flex; flex-direction: column; height: 100vh; }
-        iframe { flex: 1; border: none; width: 100%; height: 80%; }
-        .control-panel { height: 120px; background: #c5a059; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; border-top: 3px solid #000; z-index: 100; }
-        .input-group { display: flex; width: 90%; gap: 10px; }
-        input { flex: 2; padding: 12px; border-radius: 8px; border: 2px solid #000; text-align: center; font-size: 18px; font-weight: bold; }
-        button { flex: 1; padding: 12px; background: #000; color: #fff; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; cursor: pointer; }
-        p { margin: 0 0 10px 0; color: #000; font-weight: bold; font-size: 14px; }
+        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0f172a; color: #fff; font-family: sans-serif; }
+        .main { display: flex; flex-direction: column; height: 100vh; }
+        iframe { flex: 1; border: none; width: 100%; height: 85%; }
+        .footer { height: 100px; background: #c5a059; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; border-top: 3px solid #000; }
+        .row { display: flex; width: 95%; gap: 10px; }
+        input { flex: 2; padding: 12px; border-radius: 8px; border: 2px solid #000; text-align: center; font-size: 18px; }
+        button { flex: 1; padding: 12px; background: #000; color: #fff; border: none; border-radius: 8px; font-weight: bold; }
     </style>
 </head>
 <body>
-    <div class="main-container">
+    <div class="main">
         <iframe src="https://emad-aden-realestate.vercel.app"></iframe>
-
-        <div class="control-panel">
-            <p>تصفح عقاراتنا أولاً ثم أدخل رمز الدخول</p>
-            <div class="input-group">
-                <input type="password" id="code" placeholder="الرمز (123)" autocomplete="off">
-                <button onclick="login()">دخول</button>
+        <div class="footer">
+            <p style="color:#000; font-weight:bold; margin-bottom:5px;">تصفح عروضنا ثم أدخل الرمز (123)</p>
+            <div class="row">
+                <input type="password" id="c" placeholder="الرمز السري">
+                <button onclick="ok()">دخول</button>
             </div>
         </div>
     </div>
-
     <script>
-        function login() {
-            var val = document.getElementById('code').value;
-            if(val === "123") {
-                alert("تم التفعيل بنجاح! نورت شبكة المكتب");
-                // هذا الرابط السحري اللي يخلي الجوال يقتنع إن النت انفتح فيقفل الصفحة بسلام
-                window.location.href = "http://connectivitycheck.gstatic.com/generate_204";
-            } else {
-                alert("الرمز غلط يا بوب!");
-            }
+        function ok() {
+            if(document.getElementById('c').value === "123") {
+                alert("تم التفعيل! نورت مكتب عماد عدن");
+                window.location.href = "http://neverssl.com"; // إجبار الجوال يفتح النت
+            } else { alert("الرمز غلط!"); }
         }
-        // سجن المستخدم داخل المتصفح
-        window.onbeforeunload = function() { return "سجل دخولك أولاً لفتح الإنترنت"; };
+        // منع الجوال من إغلاق الصفحة تلقائياً
+        setInterval(function() { console.log("Hacking connectivity check..."); }, 500);
     </script>
 </body>
 </html>
