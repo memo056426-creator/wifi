@@ -1,28 +1,51 @@
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>مكتب عماد عدن العقاري</title>
-    <style>
-        body { background: #0f172a; color: #fff; text-align: center; padding-top: 100px; font-family: sans-serif; }
-        input { padding: 15px; width: 80%; border-radius: 10px; border: none; font-size: 20px; text-align: center; margin-bottom: 20px; }
-        button { padding: 15px 40px; background: #c5a059; border: none; border-radius: 10px; font-weight: bold; font-size: 18px; color: #000; }
-    </style>
-</head>
-<body>
-    <h1 style="color:#c5a059;">مكتب عماد عدن العقاري</h1>
-    <p>أدخل الرمز لفتح الإنترنت ثم تصفح العقارات</p>
-    <input type="password" id="p" placeholder="الرمز السري (123)">
-    <br>
-    <button onclick="go()">دخول</button>
-    <script>
-        function go() {
-            if(document.getElementById('p').value === "123") {
-                alert("نورت المكتب يا بوب");
-                window.location.href = "https://emad-aden-realestate.vercel.app";
-            } else { alert("الرمز غلط"); }
-        }
-    </script>
-</body>
-</html>
+import qrcode
+from PIL import Image, ImageDraw, ImageFont
+import os
+
+# Create QR Code
+wifi_url = "http://memo056426-creator.github.io/wifi/"
+qr = qrcode.QRCode(version=1, box_size=10, border=2)
+qr.add_data(wifi_url)
+qr.make(fit=True)
+qr_img = qr.make_image(fill_color="#D4AF37", back_color="white").convert('RGB')
+
+# Poster Dimensions (4:3 Ratio)
+width = 1200
+height = 900
+poster = Image.new('RGB', (width, height), color='#1a1a1a') # Dark luxury background
+draw = ImageDraw.Draw(poster)
+
+# Background Decoration (Subtle lines)
+for i in range(0, width, 40):
+    draw.line([(i, 0), (i, height)], fill='#262626', width=1)
+
+# Header Section (Logo/Name)
+# Using default font since specific luxury fonts might not be available in env
+try:
+    title_font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf", 60)
+    sub_font = ImageFont.truetype("/usr/share/fonts/truetype/liberation/LiberationSans-Regular.ttf", 35)
+except:
+    title_font = ImageFont.load_default()
+    sub_font = ImageFont.load_default()
+
+# Draw Text (Golden Title)
+draw.text((width/2, 100), "مكتب عماد عدن العقاري", fill="#D4AF37", font=title_font, anchor="mm")
+draw.text((width/2, 180), "EMAD ADEN REAL ESTATE", fill="#FFFFFF", font=sub_font, anchor="mm")
+
+# QR Code Box
+box_size = 350
+qr_pos = ((width - box_size) // 2, 280)
+qr_img = qr_img.resize((box_size, box_size))
+poster.paste(qr_img, qr_pos)
+
+# Call to action
+draw.text((width/2, 680), "امسح الباركود للحصول على كلمة السر", fill="#FFFFFF", font=sub_font, anchor="mm")
+draw.text((width/2, 730), "ومشاهدة أحدث عروض العقارات في عدن", fill="#D4AF37", font=sub_font, anchor="mm")
+
+# Bottom Decoration/Phone Icon placeholder
+draw.rectangle([0, height-80, width, height], fill="#D4AF37")
+draw.text((width/2, height-40), "عقارات عدن - المنصورة - بير فضل - المدينة الخضراء", fill="#000000", font=sub_font, anchor="mm")
+
+# Save the final image
+output_path = "emad_aden_wifi_poster.jpg"
+poster.save(output_path, quality=95)
