@@ -3,82 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <title>شبكة أبو عماد الملكية</title>
+    <title>مكتب عماد عدن العقاري</title>
     <style>
-        :root { --primary-color: #00d4ff; --bg-dark: #0a0a14; --gold: #ffd700; }
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        body { text-align: center; font-family: sans-serif; background-color: var(--bg-dark); color: white; margin: 0; padding: 15px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-        .profile-img { width: 140px; height: 140px; border-radius: 50%; border: 3px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); margin-top: 10px; }
-        .speed-box { background: rgba(255, 255, 255, 0.03); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); width: 100%; max-width: 360px; margin-top: 15px; }
-        .gauge-container { position: relative; width: 240px; height: 160px; margin: 0 auto; }
-        svg { width: 100%; height: 100%; }
-        .gauge-bg { fill: none; stroke: #222; stroke-width: 10; stroke-linecap: round; }
-        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
-        .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
-        .speed-digital { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); font-size: 45px; font-weight: 900; }
-        input[type="password"] { width: 100%; padding: 15px; margin: 15px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; text-align: center; font-size: 18px; outline: none; }
-        .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; margin-bottom: 10px; }
-        .btn-measure { padding: 10px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-size: 13px; margin-bottom: 15px; width: 100%; }
-        .btn-office { display: block; padding: 12px; color: var(--gold); border: 1px solid var(--gold); border-radius: 12px; text-decoration: none; font-weight: bold; font-size: 14px; }
+        :root { --gold: #c5a059; --dark: #0f172a; --white: #ffffff; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: sans-serif; background-color: var(--dark); color: var(--white); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding: 20px; text-align: center; }
+        .container { background: rgba(255, 255, 255, 0.05); padding: 30px; border-radius: 20px; border: 1px solid var(--gold); width: 100%; max-width: 400px; box-shadow: 0 15px 35px rgba(0,0,0,0.6); margin-top: 20px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 4px solid var(--gold); object-fit: cover; box-shadow: 0 0 25px rgba(197, 160, 89, 0.5); margin-bottom: 20px; }
+        h1 { color: var(--gold); font-size: 26px; margin-bottom: 10px; font-weight: bold; }
+        p { font-size: 15px; opacity: 0.9; margin-bottom: 25px; line-height: 1.6; }
+        input[type="password"] { width: 100%; padding: 15px; margin-bottom: 20px; border-radius: 12px; border: 1px solid #334155; background: #1e293b; color: white; text-align: center; font-size: 18px; outline: none; }
+        .btn-connect { width: 100%; padding: 16px; background: var(--gold); color: #000; border: none; border-radius: 12px; font-weight: bold; font-size: 18px; cursor: pointer; transition: 0.3s; }
+        .footer-link { margin-top: 25px; display: block; color: var(--gold); text-decoration: none; font-size: 14px; font-weight: bold; border-top: 1px solid rgba(197, 160, 89, 0.3); padding-top: 15px; }
     </style>
 </head>
 <body>
     <img src="MVIMG_20260220_183511.jpg" alt="عموري" class="profile-img">
-    <h1 style="font-size: 22px; color: var(--primary-color); margin: 10px 0 5px;">شبكة أبو عماد ستارلينك</h1>
-    <p style="font-size: 13px; opacity: 0.7; margin-bottom: 15px;">كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
-
-    <div class="speed-box">
-        <button class="btn-measure" onclick="runTest()">قياس السرعة الحالية</button>
-        <div class="gauge-container">
-            <svg viewBox="0 0 200 150">
-                <path class="gauge-bg" d="M 40 120 A 75 75 0 1 1 160 120" />
-                <path id="progress" class="gauge-progress" d="M 40 120 A 75 75 0 1 1 160 120" />
-                <polygon id="needle" class="needle" points="100,95 97,100 100,40 103,100" transform="rotate(-120, 100, 100)" />
-            </svg>
-            <div class="speed-digital" id="speed-num">0.0</div>
-            <div style="color:#666; font-size:11px; margin-top:-5px;">Mbps</div>
-        </div>
-
-        <div style="margin-top: 20px; border-top: 1px solid #333; padding-top: 15px;">
-            <input type="password" id="pass" placeholder="أدخل الرقم السري" autocomplete="off" readonly onfocus="this.removeAttribute('readonly');">
-            <button onclick="login()" class="btn-connect">اتصال الآن</button>
-            <a href="https://emad-aden-realestate.vercel.app" class="btn-office" target="_blank">زيارة مكتب عماد عدن العقاري</a>
-        </div>
+    
+    <div class="container">
+        <h1>مكتب عماد عدن العقاري</h1>
+        <p>نرحب بكم في شبكة الشيخ أبو عماد<br>للوصول للإنترنت يرجى إدخال الرمز</p>
+        
+        <input type="password" id="pass" placeholder="أدخل الرقم السري" autocomplete="off">
+        <button onclick="login()" class="btn-connect">دخول للشبكة</button>
+        
+        <a href="https://emad-aden-realestate.vercel.app" class="footer-link">تصفح أحدث عقارات عدن الآن</a>
     </div>
 
     <script>
-        // منع الإغلاق التلقائي لبعض المتصفحات
-        window.onbeforeunload = function() { return "هل تريد حقاً المغادرة؟"; };
-
-        function runTest() {
-            let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
-            let hour = new Date().getHours();
-            let min = (hour >= 5 && hour < 12) ? 112 : (hour >= 13 && hour < 19) ? 40 : 25;
-            let max = (hour >= 5 && hour < 12) ? 150 : (hour >= 13 && hour < 19) ? 80 : 45;
-            let targetSpeed = min + (Math.random() * (max - min));
-            let interval = setInterval(() => {
-                c++;
-                let tempSpeed = targetSpeed + (Math.random() * 6 - 3);
-                num.innerText = tempSpeed.toFixed(1);
-                let angle = (tempSpeed / 150) * 240 - 120;
-                let offset = 440 - (tempSpeed / 150) * 280;
-                ndl.setAttribute('transform', `rotate(${angle}, 100, 100)`);
-                prog.style.strokeDashoffset = offset;
-                if(c >= 25) { clearInterval(interval); num.innerText = targetSpeed.toFixed(1); }
-            }, 80);
-        }
-
         function login() {
-            let p = document.getElementById('pass').value;
-            if (p === "123") {
-                window.onbeforeunload = null; // السماح بالانتقال الآن
-                alert("تم الاتصال بنجاح!");
-                setTimeout(() => {
-                    window.location.href = "https://emad-aden-realestate.vercel.app";
-                }, 500);
-            } else { alert("الرقم السري غلط يا بوب"); }
+            var p = document.getElementById('pass').value;
+            if (p === "123") { // الرمز السري
+                alert("تم الاتصال بنجاح! نورت شبكة أبو عماد");
+                window.location.href = "https://emad-aden-realestate.vercel.app";
+            } else {
+                alert("الرمز غلط يا بوب اطلبه من المكتب");
+            }
         }
+        // منع الاغلاق التلقائي
+        window.onbeforeunload = function() { return "سجل دخولك اولاً"; };
     </script>
 </body>
 </html>
