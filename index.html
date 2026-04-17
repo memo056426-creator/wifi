@@ -5,32 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>شبكة أبو عماد الملكية</title>
     <style>
-        :root { --primary-color: #00d4ff; --bg-dark: #0a0a14; --card-bg: rgba(255, 255, 255, 0.03); }
+        :root { --primary-color: #00d4ff; --bg-dark: #0a0a14; --card-bg: rgba(255, 255, 255, 0.03); --gold: #ffd700; }
         body { text-align: center; font-family: sans-serif; background-color: var(--bg-dark); color: white; margin: 0; padding: 20px; overflow-x: hidden; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 25px rgba(0, 212, 255, 0.4); margin-bottom: 15px; }
-        h1 { font-size: 24px; color: var(--primary-color); margin: 0; }
-        .subtitle { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-        .gauge-container { position: relative; width: 280px; height: 200px; margin: 0 auto; }
-        svg { width: 100%; height: 100%; }
-        .gauge-bg { fill: none; stroke: #222; stroke-width: 12; stroke-linecap: round; }
-        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
-        .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
-        .speed-digital { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 50px; font-weight: 900; color: white; }
-        .speed-box { background: var(--card-bg); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); max-width: 380px; margin: 0 auto; }
-        .btn-measure { padding: 10px 25px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
-        .auth-fixed { margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; }
-        input[type="password"] { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; text-align: center; box-sizing: border-box; font-size: 16px; }
-        .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; margin-bottom: 10px; }
+        .profile-img { width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 20px rgba(0, 212, 255, 0.3); margin-bottom: 15px; }
+        h1 { font-size: 22px; color: var(--primary-color); margin: 0; }
+        .subtitle { font-size: 13px; opacity: 0.7; margin-bottom: 15px; }
         
-        /* زر موقع المكتب العقاري */
-        .btn-office { display: block; padding: 12px; background: none; color: #ffd700; border: 1px solid #ffd700; border-radius: 12px; font-weight: bold; text-decoration: none; font-size: 15px; transition: 0.3s; margin-top: 10px; }
-        .btn-office:hover { background: #ffd700; color: black; }
+        .speed-box { background: var(--card-bg); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); max-width: 380px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .gauge-container { position: relative; width: 260px; height: 180px; margin: 0 auto; }
+        svg { width: 100%; height: 100%; }
+        .gauge-bg { fill: none; stroke: #222; stroke-width: 10; stroke-linecap: round; }
+        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 10; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
+        .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
+        .speed-digital { position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%); font-size: 45px; font-weight: 900; }
+        
+        .btn-measure { padding: 8px 20px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-size: 12px; margin-bottom: 15px; }
+        
+        input[type="password"] { width: 100%; padding: 12px; margin: 10px 0; border-radius: 10px; border: 1px solid #333; background: #000; color: #fff; text-align: center; font-size: 16px; box-sizing: border-box; }
+        .btn-connect { padding: 14px; background: var(--primary-color); color: black; border: none; border-radius: 10px; font-weight: bold; width: 100%; cursor: pointer; font-size: 16px; margin-bottom: 8px; }
+        
+        .btn-office { display: block; padding: 10px; background: none; color: var(--gold); border: 1px solid var(--gold); border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 14px; margin-bottom: 8px; }
+        .btn-whatsapp { display: block; padding: 10px; background: #25d366; color: white; border-radius: 10px; font-weight: bold; text-decoration: none; font-size: 14px; }
     </style>
 </head>
 <body>
     <img src="MVIMG_20260220_183511.jpg" alt="عموري" class="profile-img">
     <h1>شبكة أبو عماد ستارلينك</h1>
     <p class="subtitle">كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
+
     <div class="speed-box">
         <button class="btn-measure" onclick="runTest()">قياس السرعة الحالية</button>
         <div class="gauge-container">
@@ -38,18 +40,20 @@
                 <path class="gauge-bg" d="M 40 120 A 75 75 0 1 1 160 120" />
                 <path id="progress" class="gauge-progress" d="M 40 120 A 75 75 0 1 1 160 120" />
                 <polygon id="needle" class="needle" points="100,95 97,100 100,40 103,100" transform="rotate(-120, 100, 100)" />
-                <circle cx="100" cy="100" r="5" fill="#555" />
             </svg>
             <div class="speed-digital" id="speed-num">0.0</div>
-            <div style="color:#666; font-size:12px; margin-top:-10px;">Mbps</div>
+            <div style="color:#666; font-size:11px; margin-top:-5px;">Mbps</div>
         </div>
-        <div class="auth-fixed">
+
+        <div style="margin-top: 15px; border-top: 1px solid #333; padding-top: 15px;">
             <input type="password" id="pass" placeholder="أدخل الرقم السري">
             <button onclick="login()" class="btn-connect">اتصال الآن</button>
             
-            <a href="https://emad-aden-realestate.vercel.app" class="btn-office" target="_blank">زيارة مكتب عماد عدن العقاري</a>
+            <a href="https://emad-aden-realestate.vercel.app" class="btn-office" target="_blank">عروض مكتب عماد عدن العقارية</a>
+            <a href="https://wa.me/967XXXXXXXXX" class="btn-whatsapp" target="_blank">تواصل مع المكتب مباشرة</a>
         </div>
     </div>
+
     <script>
         function runTest() {
             let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
@@ -57,33 +61,27 @@
             let min, max;
             if (hour >= 5 && hour < 12) { min = 112; max = 150; }
             else if (hour >= 13 && hour < 19) { min = 40; max = 80; }
-            else if (hour >= 19 || hour < 5) { min = 25; max = 40; }
-            else { min = 80; max = 110; }
+            else { min = 25; max = 45; }
             let targetSpeed = min + (Math.random() * (max - min));
             let interval = setInterval(() => {
                 c++;
-                let tempSpeed = targetSpeed + (Math.random() * 6 - 3);
+                let tempSpeed = targetSpeed + (Math.random() * 8 - 4);
                 num.innerText = tempSpeed.toFixed(1);
                 let angle = (tempSpeed / 150) * 240 - 120;
                 let offset = 440 - (tempSpeed / 150) * 280;
                 ndl.setAttribute('transform', `rotate(${angle}, 100, 100)`);
                 prog.style.strokeDashoffset = offset;
-                if(c >= 30) { 
-                    clearInterval(interval); 
-                    num.innerText = targetSpeed.toFixed(1);
-                    let finalAngle = (targetSpeed / 150) * 240 - 120;
-                    let finalOffset = 440 - (targetSpeed / 150) * 280;
-                    ndl.setAttribute('transform', `rotate(${finalAngle}, 100, 100)`);
-                    prog.style.strokeDashoffset = finalOffset;
-                }
+                if(c >= 30) { clearInterval(interval); num.innerText = targetSpeed.toFixed(1); }
             }, 80);
         }
+
         function login() {
             let p = document.getElementById('pass').value;
             if (p === "123") {
-                alert("تم الاتصال بنجاح نورت الشبكة");
-                window.location.href = "http://google.com";
-            } else { alert("الرقم السري غلط يا بوب"); }
+                alert("تم الاتصال بنجاح! نورت شبكة أبو عماد");
+                // التوجيه التلقائي لموقع المكتب بدلاً من جوجل
+                window.location.href = "https://emad-aden-realestate.vercel.app";
+            } else { alert("الرقم السري غلط يا بوب اطلبه من أبو عماد"); }
         }
     </script>
 </body>
