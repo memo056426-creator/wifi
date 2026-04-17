@@ -5,28 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مكتب عماد عدن العقاري</title>
     <style>
-        body { background: #0f172a; color: #fff; text-align: center; font-family: sans-serif; padding-top: 50px; }
-        .box { border: 2px solid #c5a059; padding: 30px; margin: 20px; border-radius: 20px; }
-        input { padding: 15px; width: 80%; margin: 20px 0; border-radius: 10px; border: none; font-size: 20px; text-align: center; }
-        button { padding: 15px 40px; background: #c5a059; border: none; border-radius: 10px; font-weight: bold; font-size: 18px; cursor: pointer; }
+        body { background: #0f172a; color: #fff; text-align: center; font-family: sans-serif; height: 100vh; display: flex; align-items: center; justify-content: center; margin: 0; }
+        .card { border: 3px solid #c5a059; padding: 40px 20px; width: 90%; border-radius: 30px; box-shadow: 0 0 50px rgba(197, 160, 89, 0.2); }
+        h1 { color: #c5a059; margin-bottom: 20px; }
+        input { width: 80%; padding: 15px; margin: 20px 0; border-radius: 12px; border: none; font-size: 22px; text-align: center; background: #1e293b; color: #fff; }
+        button { width: 80%; padding: 15px; background: #c5a059; border: none; border-radius: 12px; font-weight: bold; font-size: 20px; color: #000; }
     </style>
 </head>
 <body>
-    <div class="box">
-        <h2>مكتب عماد عدن العقاري</h2>
-        <p>يجب إدخال الرمز لفتح الإنترنت</p>
-        <input type="password" id="p" placeholder="الرمز السري (123)">
-        <button onclick="go()">تفعيل الآن</button>
+    <div class="card">
+        <h1>مكتب عماد عدن</h1>
+        <p>تفضل بزيارة مكتبنا العقاري أولاً<br>ثم أدخل رمز الدخول (123)</p>
+        <a href="https://emad-aden-realestate.vercel.app" target="_blank" style="color:#c5a059; display:block; margin:20px 0; font-weight:bold; font-size:18px;">١- اضغط هنا لمشاهدة العروض</a>
+        <input type="password" id="pin" placeholder="أدخل الرمز هنا">
+        <button onclick="unlock()">٢- فتح الإنترنت</button>
     </div>
     <script>
-        // أول ما تفتح الصفحة يطلع تنبيه يحبس المتصفح
-        alert("أهلاً بك في شبكة مكتب عماد عدن.. اضغط موافق لإدخال الرمز");
-
-        function go() {
-            if(document.getElementById('p').value === "123") {
-                alert("كفو! تم تفعيل النت");
-                window.location.href = "http://connectivitycheck.gstatic.com/generate_204";
-            } else { alert("الرمز غلط!"); }
+        // حركة "الحشرة" لمنع الجوال من إغلاق المتصفح تلقائياً
+        window.onload = function() {
+            window.history.pushState(null, null, window.location.href);
+            window.onpopstate = function() { window.history.go(1); };
+        };
+        function unlock() {
+            if(document.getElementById('pin').value === "123") {
+                alert("تم التفعيل! نورت مكتب عماد عدن");
+                window.location.href = "http://1.1.1.1"; // إجبار الجوال على طلب نت حقيقي
+            } else { alert("الرمز غلط يا بوب"); }
         }
     </script>
 </body>
