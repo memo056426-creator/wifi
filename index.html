@@ -3,30 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>مكتب عماد عدن العقاري</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <title>بوابة مكتب عماد عدن العقارية</title>
     <style>
         body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0f172a; font-family: sans-serif; }
-        #site-container { position: absolute; top: 0; left: 0; width: 100%; height: 80%; border: none; }
-        #login-bar { position: absolute; bottom: 0; left: 0; width: 100%; height: 20%; background: #c5a059; display: flex; align-items: center; justify-content: space-around; padding: 10px; box-sizing: border-box; }
-        input { padding: 12px; border-radius: 8px; border: none; width: 50%; font-size: 16px; text-align: center; }
-        button { padding: 12px 20px; background: #0f172a; color: #fff; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+        .sticky-header { position: absolute; top: 0; width: 100%; height: 60px; background: #c5a059; color: #000; display: flex; align-items: center; justify-content: center; font-weight: bold; z-index: 999; box-shadow: 0 2px 10px rgba(0,0,0,0.5); }
+        #site-frame { position: absolute; top: 60px; left: 0; width: 100%; height: calc(100% - 140px); border: none; }
+        .login-footer { position: absolute; bottom: 0; width: 100%; height: 80px; background: #1e293b; display: flex; align-items: center; justify-content: space-around; padding: 10px; z-index: 999; border-top: 2px solid #c5a059; }
+        input { width: 50%; padding: 12px; border-radius: 8px; border: 1px solid #c5a059; background: #0f172a; color: white; text-align: center; font-size: 18px; }
+        button { width: 35%; padding: 12px; background: #c5a059; color: #000; border: none; border-radius: 8px; font-weight: bold; font-size: 16px; }
     </style>
 </head>
 <body>
-    <iframe id="site-container" src="https://emad-aden-realestate.vercel.app"></iframe>
+    <div class="sticky-header">مكتب عماد عدن العقاري - بوابة ستارلينك</div>
+    
+    <iframe id="site-frame" src="https://emad-aden-realestate.vercel.app"></iframe>
 
-    <div id="login-bar">
-        <input type="password" id="pass" placeholder="أدخل رمز الدخول (123)" autocomplete="off">
-        <button onclick="connect()">اتصال</button>
+    <div class="login-footer">
+        <input type="password" id="p" placeholder="الرمز (123)" autocomplete="off">
+        <button onclick="go()">دخول</button>
     </div>
 
     <script>
-        function connect() {
-            if (document.getElementById('pass').value === "123") {
-                alert("تم التفعيل بنجاح يا بوب");
-                window.location.href = "http://google.com"; // إجبار الجوال يفتح النت
-            } else { alert("الرمز غلط!"); }
+        // حركة منع الإغلاق التلقائي (Keep-Alive)
+        setInterval(function() {
+            var f = document.getElementById('site-frame');
+            f.src = f.src; 
+        }, 180000); // تحديث الصفحة كل 3 دقائق داخلياً عشان الجوال ما يمل ويقفل
+
+        function go() {
+            if (document.getElementById('p').value === "123") {
+                alert("تم التفعيل! استمتع بالنت يا بوب");
+                window.location.href = "http://logout.net"; // رابط وهمي يخلي النظام يفتح النت بالكامل
+            } else {
+                alert("الرمز غلط يا شيخ صالح");
+            }
         }
+        // سجن المتصفح ومنعه من الهرب
+        window.onbeforeunload = function() { return "يجب إكمال التصفح أولاً"; };
     </script>
 </body>
 </html>
