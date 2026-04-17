@@ -5,35 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>مكتب عماد عدن العقاري</title>
     <style>
-        body, html { margin: 0; padding: 0; height: 100%; overflow: hidden; background: #0f172a; color: #fff; font-family: sans-serif; }
-        .main { display: flex; flex-direction: column; height: 100vh; }
-        iframe { flex: 1; border: none; width: 100%; height: 85%; }
-        .footer { height: 100px; background: #c5a059; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 10px; border-top: 3px solid #000; }
-        .row { display: flex; width: 95%; gap: 10px; }
-        input { flex: 2; padding: 12px; border-radius: 8px; border: 2px solid #000; text-align: center; font-size: 18px; }
-        button { flex: 1; padding: 12px; background: #000; color: #fff; border: none; border-radius: 8px; font-weight: bold; }
+        body { background: #0f172a; color: #fff; text-align: center; font-family: sans-serif; padding-top: 50px; }
+        .box { border: 2px solid #c5a059; padding: 30px; margin: 20px; border-radius: 20px; }
+        input { padding: 15px; width: 80%; margin: 20px 0; border-radius: 10px; border: none; font-size: 20px; text-align: center; }
+        button { padding: 15px 40px; background: #c5a059; border: none; border-radius: 10px; font-weight: bold; font-size: 18px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <div class="main">
-        <iframe src="https://emad-aden-realestate.vercel.app"></iframe>
-        <div class="footer">
-            <p style="color:#000; font-weight:bold; margin-bottom:5px;">تصفح عروضنا ثم أدخل الرمز (123)</p>
-            <div class="row">
-                <input type="password" id="c" placeholder="الرمز السري">
-                <button onclick="ok()">دخول</button>
-            </div>
-        </div>
+    <div class="box">
+        <h2>مكتب عماد عدن العقاري</h2>
+        <p>يجب إدخال الرمز لفتح الإنترنت</p>
+        <input type="password" id="p" placeholder="الرمز السري (123)">
+        <button onclick="go()">تفعيل الآن</button>
     </div>
     <script>
-        function ok() {
-            if(document.getElementById('c').value === "123") {
-                alert("تم التفعيل! نورت مكتب عماد عدن");
-                window.location.href = "http://neverssl.com"; // إجبار الجوال يفتح النت
+        // أول ما تفتح الصفحة يطلع تنبيه يحبس المتصفح
+        alert("أهلاً بك في شبكة مكتب عماد عدن.. اضغط موافق لإدخال الرمز");
+
+        function go() {
+            if(document.getElementById('p').value === "123") {
+                alert("كفو! تم تفعيل النت");
+                window.location.href = "http://connectivitycheck.gstatic.com/generate_204";
             } else { alert("الرمز غلط!"); }
         }
-        // منع الجوال من إغلاق الصفحة تلقائياً
-        setInterval(function() { console.log("Hacking connectivity check..."); }, 500);
     </script>
 </body>
 </html>
