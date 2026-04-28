@@ -1,84 +1,114 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبكة أبو عماد الملكية</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>مكتب عماد عدن العقاري</title>
+    <link rel="stylesheet" href="css/style.css">
     <style>
-        :root { --primary-color: #00d4ff; --bg-dark: #0a0a14; --card-bg: rgba(255, 255, 255, 0.03); }
-        body { text-align: center; font-family: sans-serif; background-color: var(--bg-dark); color: white; margin: 0; padding: 20px; overflow-x: hidden; }
-        .profile-img { width: 160px; height: 160px; border-radius: 50%; border: 4px solid var(--primary-color); object-fit: cover; box-shadow: 0 0 25px rgba(0, 212, 255, 0.4); margin-bottom: 15px; }
-        h1 { font-size: 24px; color: var(--primary-color); margin: 0; }
-        .subtitle { font-size: 14px; opacity: 0.7; margin-bottom: 20px; }
-        .gauge-container { position: relative; width: 280px; height: 200px; margin: 0 auto; }
-        svg { width: 100%; height: 100%; }
-        .gauge-bg { fill: none; stroke: #222; stroke-width: 12; stroke-linecap: round; }
-        .gauge-progress { fill: none; stroke: var(--primary-color); stroke-width: 12; stroke-linecap: round; stroke-dasharray: 440; stroke-dashoffset: 440; transition: 0.1s; }
-        .needle { fill: #ddd; transform-origin: 100px 100px; transition: 0.1s; }
-        .speed-digital { position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 50px; font-weight: 900; color: white; }
-        .speed-box { background: var(--card-bg); padding: 20px; border-radius: 25px; border: 1px solid rgba(0, 212, 255, 0.1); max-width: 380px; margin: 0 auto; }
-        .btn-measure { padding: 10px 25px; background: none; color: var(--primary-color); border: 1px solid var(--primary-color); border-radius: 50px; cursor: pointer; font-weight: bold; margin-bottom: 15px; font-size: 14px; }
-        .auth-fixed { margin-top: 20px; padding-top: 20px; border-top: 1px solid #333; }
-        input[type="password"] { width: 100%; padding: 14px; margin: 10px 0; border-radius: 12px; border: 1px solid #333; background: #000; color: #fff; text-align: center; box-sizing: border-box; font-size: 16px; }
-        .btn-connect { padding: 15px; background: var(--primary-color); color: black; border: none; border-radius: 12px; font-weight: bold; width: 100%; cursor: pointer; font-size: 18px; }
+        /* تنسيقات مكتب عماد عدن العقاري */
+        body {
+            background: #1a1a1a;
+        }
+        .main {
+            background: #1a1a1a;
+            border: 1px solid #b8860b;
+            border-radius: 12px;
+            padding: 30px 20px;
+            max-width: 360px;
+            margin: 40px auto;
+            color: #fff;
+            text-align: center;
+        }
+        .main h1 {
+            color: #b8860b;
+            font-size: 24px;
+            margin: 0 0 5px 0;
+        }
+        .subtitle {
+            color: #ccc;
+            margin: 0 0 20px 0;
+        }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 14px;
+            margin: 8px 0;
+            border: 1px solid #b8860b;
+            background: #0d0d0d;
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 15px;
+            text-align: center;
+        }
+        button[type="submit"] {
+            background: #b8860b;
+            color: #000;
+            font-weight: bold;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.85em;
+            color: #aaa;
+        }
+        .footer .phone {
+            color: #b8860b;
+            direction: ltr;
+            display: inline-block;
+        }
+        .error-box {
+            background: #f8d7da;
+            color: #721c24;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
+        .already-logged-in-box {
+            background: #fff3cd;
+            color: #856404;
+            border-radius: 6px;
+            padding: 10px;
+            margin: 15px 0;
+            text-align: center;
+        }
     </style>
 </head>
 <body>
-    <img src="MVIMG_20260220_183511.jpg" alt="عموري" class="profile-img">
-    <h1>شبكة أبو عماد ستارلينك</h1>
-    <p class="subtitle">كلنا نحب عموري.. اذكر الله واستمتع بالنت</p>
-    <div class="speed-box">
-        <button class="btn-measure" onclick="runTest()">قياس السرعة الحالية</button>
-        <div class="gauge-container">
-            <svg viewBox="0 0 200 150">
-                <path class="gauge-bg" d="M 40 120 A 75 75 0 1 1 160 120" />
-                <path id="progress" class="gauge-progress" d="M 40 120 A 75 75 0 1 1 160 120" />
-                <polygon id="needle" class="needle" points="100,95 97,100 100,40 103,100" transform="rotate(-120, 100, 100)" />
-                <circle cx="100" cy="100" r="5" fill="#555" />
-            </svg>
-            <div class="speed-digital" id="speed-num">0.0</div>
-            <div style="color:#666; font-size:12px; margin-top:-10px;">Mbps</div>
+    <div class="main">
+        <h1>مكتب عماد عدن العقاري</h1>
+        <p class="subtitle">المرجعية العقارية - فخامة وأمان</p>
+
+        <!-- عرض رسائل الخطأ من الراوتر -->
+        $(if error)
+        <div class="error-box">$(error)</div>
+        $(endif)
+
+        <!-- عرض رسالة إذا كان المستخدم مسجلاً بالفعل -->
+        $(if already-logged-in)
+        <div class="already-logged-in-box">
+            أنت مسجل الدخول بالفعل. اضغط <a href="$(link-logout)">هنا لتسجيل الخروج</a>.
         </div>
-        <div class="auth-fixed">
-            <input type="password" id="pass" placeholder="أدخل الرقم السري">
-            <button onclick="login()" class="btn-connect">اتصال الآن</button>
+        $(endif)
+
+        <form method="post" action="/login">
+            <input type="text" name="username" placeholder="رقم الجوال أو اسم المستخدم" required autocomplete="off">
+            <input type="password" name="password" placeholder="كلمة المرور" required autocomplete="off">
+            <button type="submit">دخول إلى الإنترنت</button>
+        </form>
+
+        <div class="footer">
+            <p>للتواصل والدعم: <span class="phone">📞 7735718899</span></p>
+            <p>© جميع الحقوق محفوظة - مكتب عماد عدن العقاري</p>
         </div>
     </div>
-    <script>
-        function runTest() {
-            let num = document.getElementById('speed-num'), prog = document.getElementById('progress'), ndl = document.getElementById('needle'), c = 0;
-            let hour = new Date().getHours();
-            let min, max;
-            if (hour >= 5 && hour < 12) { min = 112; max = 150; }
-            else if (hour >= 13 && hour < 19) { min = 40; max = 80; }
-            else if (hour >= 19 || hour < 5) { min = 25; max = 40; }
-            else { min = 80; max = 110; }
-            let targetSpeed = min + (Math.random() * (max - min));
-            let interval = setInterval(() => {
-                c++;
-                let tempSpeed = targetSpeed + (Math.random() * 6 - 3);
-                num.innerText = tempSpeed.toFixed(1);
-                let angle = (tempSpeed / 150) * 240 - 120;
-                let offset = 440 - (tempSpeed / 150) * 280;
-                ndl.setAttribute('transform', `rotate(${angle}, 100, 100)`);
-                prog.style.strokeDashoffset = offset;
-                if(c >= 30) { 
-                    clearInterval(interval); 
-                    num.innerText = targetSpeed.toFixed(1);
-                    let finalAngle = (targetSpeed / 150) * 240 - 120;
-                    let finalOffset = 440 - (targetSpeed / 150) * 280;
-                    ndl.setAttribute('transform', `rotate(${finalAngle}, 100, 100)`);
-                    prog.style.strokeDashoffset = finalOffset;
-                }
-            }, 80);
-        }
-        function login() {
-            let p = document.getElementById('pass').value;
-            if (p === "123") {
-                alert("تم الاتصال بنجاح نورت الشبكة");
-                window.location.href = "http://google.com";
-            } else { alert("الرقم السري غلط يا بوب"); }
-        }
-    </script>
 </body>
 </html>
