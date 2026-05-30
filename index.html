@@ -1,114 +1,31 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>مكتب عماد عدن العقاري</title>
-    <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* تنسيقات مكتب عماد عدن العقاري */
-        body {
-            background: #1a1a1a;
-        }
-        .main {
-            background: #1a1a1a;
-            border: 1px solid #b8860b;
-            border-radius: 12px;
-            padding: 30px 20px;
-            max-width: 360px;
-            margin: 40px auto;
-            color: #fff;
-            text-align: center;
-        }
-        .main h1 {
-            color: #b8860b;
-            font-size: 24px;
-            margin: 0 0 5px 0;
-        }
-        .subtitle {
-            color: #ccc;
-            margin: 0 0 20px 0;
-        }
-        input[type="text"],
-        input[type="password"] {
-            width: 100%;
-            padding: 14px;
-            margin: 8px 0;
-            border: 1px solid #b8860b;
-            background: #0d0d0d;
-            color: #fff;
-            border-radius: 6px;
-            box-sizing: border-box;
-            font-size: 15px;
-            text-align: center;
-        }
-        button[type="submit"] {
-            background: #b8860b;
-            color: #000;
-            font-weight: bold;
-            padding: 14px;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            width: 100%;
-            font-size: 16px;
-            margin-top: 15px;
-        }
-        .footer {
-            margin-top: 20px;
-            font-size: 0.85em;
-            color: #aaa;
-        }
-        .footer .phone {
-            color: #b8860b;
-            direction: ltr;
-            display: inline-block;
-        }
-        .error-box {
-            background: #f8d7da;
-            color: #721c24;
-            border-radius: 6px;
-            padding: 10px;
-            margin: 15px 0;
-            text-align: center;
-        }
-        .already-logged-in-box {
-            background: #fff3cd;
-            color: #856404;
-            border-radius: 6px;
-            padding: 10px;
-            margin: 15px 0;
-            text-align: center;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>صفحة ترحيب</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    background:url("bg.png") no-repeat center center;
+    background-size:cover;
+    overflow:hidden;
+}
+</style>
+
 </head>
 <body>
-    <div class="main">
-        <h1>مكتب عماد عدن العقاري</h1>
-        <p class="subtitle">المرجعية العقارية - فخامة وأمان</p>
 
-        <!-- عرض رسائل الخطأ من الراوتر -->
-        $(if error)
-        <div class="error-box">$(error)</div>
-        $(endif)
-
-        <!-- عرض رسالة إذا كان المستخدم مسجلاً بالفعل -->
-        $(if already-logged-in)
-        <div class="already-logged-in-box">
-            أنت مسجل الدخول بالفعل. اضغط <a href="$(link-logout)">هنا لتسجيل الخروج</a>.
-        </div>
-        $(endif)
-
-        <form method="post" action="/login">
-            <input type="text" name="username" placeholder="رقم الجوال أو اسم المستخدم" required autocomplete="off">
-            <input type="password" name="password" placeholder="كلمة المرور" required autocomplete="off">
-            <button type="submit">دخول إلى الإنترنت</button>
-        </form>
-
-        <div class="footer">
-            <p>للتواصل والدعم: <span class="phone">📞 7735718899</span></p>
-            <p>© جميع الحقوق محفوظة - مكتب عماد عدن العقاري</p>
-        </div>
-    </div>
 </body>
 </html>
