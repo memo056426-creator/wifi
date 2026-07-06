@@ -2,50 +2,426 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="refresh" content="0; url=https://emad-aden-realestate.vercel.app/">
-    <title>جاري التحويل - مكتب عماد عدن العقاري</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="مكتب عماد عدن العقاري - أفضل العروض العقارية في عدن">
+    <title>مكتب عماد عدن العقاري | الصفحة الرئيسية</title>
     <style>
-        body {
+        /* إعدادات عامة */
+        :root {
+            --primary-gold: #d4af37;
+            --secondary-gold: #b8860b;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-light: #f5f5f5;
+            --text-muted: #aaaaaa;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1a1a1a;
-            color: #ffffff;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* شريط التنقل (Navbar) */
+        header {
+            background-color: rgba(18, 18, 18, 0.95);
+            padding: 15px 50px;
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .header-logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            border: 2px solid var(--primary-gold);
+            object-fit: cover;
+        }
+
+        .header-logo h2 {
+            color: var(--primary-gold);
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .btn-visit-main {
+            background: linear-gradient(135deg, var(--primary-gold), var(--secondary-gold));
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .btn-visit-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* القسم الرئيسي (Hero Section) */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            text-align: center;
+            padding: 0 20px;
+            background: radial-gradient(circle at center, #2a2a2a, var(--dark-bg));
+            margin-top: 60px;
+        }
+
+        .hero-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--primary-gold);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            margin-bottom: 30px;
+            object-fit: cover;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            color: var(--primary-gold);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.8);
+        }
+
+        .hero p {
+            font-size: 20px;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin-bottom: 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .hero-btn {
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--primary-gold);
+            color: #000;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-gold);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary-gold);
+            border: 2px solid var(--primary-gold);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+        }
+
+        /* قسم الخدمات (Services Section) */
+        .services {
+            padding: 80px 50px;
+            background-color: #161616;
             text-align: center;
         }
-        .container {
-            max-width: 400px;
+
+        .section-title {
+            font-size: 36px;
+            color: var(--primary-gold);
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
         }
-        .logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 2px solid #d4af37;
+
+        .section-title::after {
+            content: '';
+            width: 50%;
+            height: 3px;
+            background: var(--primary-gold);
+            position: absolute;
+            bottom: -10px;
+            left: 25%;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-gold);
+        }
+
+        .service-icon {
+            font-size: 50px;
             margin-bottom: 20px;
         }
-        p {
-            color: #d4af37;
+
+        .service-card h3 {
+            font-size: 24px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-muted);
+            font-size: 16px;
+        }
+
+        /* قسم الإحصائيات (Stats Section) */
+        .stats {
+            padding: 60px 50px;
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('1000082330.jpg') center/cover fixed;
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            text-align: center;
+        }
+
+        .stat-item {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .stat-title {
             font-size: 18px;
+            color: var(--text-light);
+        }
+
+        /* التذييل (Footer) */
+        footer {
+            background-color: #0a0a0a;
+            padding: 50px 50px 20px;
+            text-align: center;
+            border-top: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-bottom: 40px;
+            text-align: right;
+        }
+
+        .footer-col h4 {
+            color: var(--primary-gold);
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col p {
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .contact-info {
+            font-size: 18px;
+            direction: ltr;
+            text-align: right;
+        }
+
+        .footer-bottom {
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* استجابة الشاشات الصغيرة (Responsive) */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+            .hero p {
+                font-size: 16px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .contact-info {
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- الصورة المرفقة 1000082330.jpg -->
-        <img src="1000082330.jpg" alt="مكتب عماد عدن العقاري" class="logo">
-        <p>جاري تحويلكم إلى الموقع الإلكتروني...</p>
-    </div>
+    <header>
+        <div class="header-logo">
+            <img src="1000082330.jpg" alt="شعار مكتب عماد">
+            <h2>مكتب عماد العقاري</h2>
+        </div>
+        <nav class="nav-links">
+            <a href="#home">الرئيسية</a>
+            <a href="#services">خدماتنا</a>
+            <a href="#contact">اتصل بنا</a>
+        </nav>
+        <a href="https://emad-aden-realestate.vercel.app/" class="btn-visit-main">الموقع الرسمي</a>
+    </header>
+
+    <section id="home" class="hero">
+        <img src="1000082330.jpg" alt="مكتب عماد عدن العقاري" class="hero-img">
+        <h1>مكتب عماد عدن العقاري</h1>
+        <p>بوابتك نحو الاستثمار الآمن. نقدم لك أفضل العروض العقارية في مدينة عدن بيع، شراء، وتثمين العقارات بمهنية ومصداقية عالية.</p>
+        
+        <div class="hero-buttons">
+            <a href="https://emad-aden-realestate.vercel.app/" class="hero-btn btn-primary">تصفح العروض الآن</a>
+            <a href="#services" class="hero-btn btn-secondary">تعرف على خدماتنا</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <h2 class="section-title">الخدمات العقارية</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">🏢</div>
+                <h3>البيع والشراء</h3>
+                <p>نوفر لكم مجموعة واسعة من الخيارات السكنية والتجارية التي تناسب كافة الميزانيات والاحتياجات في أرقى مناطق عدن.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>تثمين العقارات</h3>
+                <p>خدمة التقييم والتثمين العقاري الدقيق مبنية على دراسة السوق الحالية وخبرة طويلة في المجال العقاري.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🤝</div>
+                <h3>الاستشارات والاستثمار</h3>
+                <p>نقدم استشارات مجانية للمستثمرين لضمان تحقيق أعلى العوائد الاستثمارية وتوجيه رأس المال للمسار الصحيح.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">+500</div>
+            <div class="stat-title">عميل سعيد</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">+120</div>
+            <div class="stat-title">عقار مباع</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">10</div>
+            <div class="stat-title">سنوات من الخبرة</div>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h4>عن المكتب</h4>
+                <p>مكتب عماد عدن العقاري هو وجهتك الأولى والموثوقة للبحث عن العقار المناسب. نلتزم بتقديم أرقى الخدمات بشفافية تامة.</p>
+            </div>
+            <div class="footer-col">
+                <h4>العنوان</h4>
+                <p>اليمن، عدن - القاهرة</p>
+                <p>شارع السنافر العام، قبل بريد القاهرة</p>
+            </div>
+            <div class="footer-col">
+                <h4>تواصل معنا</h4>
+                <p>للاستفسار المباشر عبر الواتساب أو الاتصال:</p>
+                <p class="contact-info" style="color: var(--primary-gold); font-weight: bold;">+967 773 571 889</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2026 مكتب عماد عدن العقاري. جميع الحقوق محفوظة.
+        </div>
+    </footer>
 
     <script>
-        // توجيه المتصفح للموقع
-        window.location.href = "https://emad-aden-realestate.vercel.app/";
+        // تأثيرات حركية بسيطة عند النزول بالصفحة
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(18, 18, 18, 0.98)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(18, 18, 18, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
     </script>
-
 </body>
 </html>
-
